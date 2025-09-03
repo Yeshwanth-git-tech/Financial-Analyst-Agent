@@ -1,0 +1,15 @@
+# Normalize all text files to use LF line endings for cross-platform consistency.
+* text=auto eol=lf
+
+# Mark Jupyter Notebooks as documentation to not skew language stats with JSON.
+*.ipynb linguist-documentation
+
+# Treat common data, config, and documentation files as non-code.
+*.csv linguist-documentation
+*.json linguist-documentation
+*.pdf linguist-documentation
+*.md linguist-documentation
+*.env linguist-vendored
+
+# Ignore Python cache files.
+__pycache__/* linguist-vendored
