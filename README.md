@@ -1,7 +1,7 @@
 # Agentive AI for Financial Research & Analysis
 
 <p align="center">
-  <img src="https<strong>:</strong>//your-image-link-here.com/banner.png" alt="Project Banner Image">
+  <img src="https<strong>:</strong>Gemini_Generated_Image_noxnqfnoxnqfnoxn.png" alt="Project Banner Image">
 </p>
 
 ## Overview
