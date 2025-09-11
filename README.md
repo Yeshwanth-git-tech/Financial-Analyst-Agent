@@ -6,7 +6,7 @@ Agentive Finance AI is an autonomous system for financial research and analysis 
 
 ```mermaid
 flowchart TD
-    A["🧠 User Input: What is Tesla's stock price?"] --> B["🤖 Orchestrator Agent"]
+    A["🧠 User Input: What is Tesla's stock price, revenue trend, or board members?"] --> B["🤖 Orchestrator Agent"]
 
     subgraph "📡 Data Retrieval"
         B --> C1["📄 SEC Filings Agent"]
