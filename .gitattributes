@@ -1,0 +1,12 @@
+# Ignore Markdown and HTML files from language stats
+*.md linguist-documentation
+*.html linguist-documentation
+
+# Ignore JSON files (e.g., config or data)
+*.json linguist-generated
+
+# Treat Python files as source code (important if mixed with notebooks)
+*.py linguist-detectable
+
+# Optional: Ignore Jupyter notebooks from language stats
+*.ipynb linguist-documentation
