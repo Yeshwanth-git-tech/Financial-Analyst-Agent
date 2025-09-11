@@ -4,39 +4,37 @@ Agentive Finance AI is an autonomous system for financial research and analysis 
 
 ---
 
-
+```mermaid
 flowchart TD
-    %% === USER INPUT ===
-    A["User Input: What is Tesla's stock price?"] --> B{"Orchestrator Agent"}
+    A["🧠 User Input: What is Tesla's stock price?"] --> B["🤖 Orchestrator Agent"]
 
-    %% === DATA RETRIEVAL ===
-    subgraph "Data Retrieval"
-        B --> C1["SEC Filings Agent: Parse 10-Ks"]
-        B --> C2["Market Data Agent: Alpha Vantage API"]
-        B --> C3["Knowledge Graph Agent: Query Neo4j"]
+    subgraph "📡 Data Retrieval"
+        B --> C1["📄 SEC Filings Agent"]
+        B --> C2["📈 Market Data Agent"]
+        B --> C3["🔗 Knowledge Graph Agent"]
     end
 
     %% === SEC BRANCH ===
-    C1 --> D1["Extract Key People, Risks, Revenues"]
-    D1 --> E1["Generate Filing Summary"]
+    C1 --> D1["📝 Extract People, Risks, Revenues"]
+    D1 --> E1["📘 Filing Summary"]
 
     %% === MARKET DATA BRANCH ===
-    C2 --> D2{"API Key and Symbol Valid?"}
-    D2 -- "Yes" --> E2["Fetch Real-Time TSLA Price"]
-    D2 -- "No" --> E3["Handle Missing API Key"]
+    C2 --> D2{"🔍 API Key Valid?"}
+    D2 -->|Yes| E2["💵 Get Real-Time $TSLA Price"]
+    D2 -->|No| E3["❗ Handle API Error"]
 
     %% === KNOWLEDGE GRAPH BRANCH ===
-    C3 --> D3["Traverse Entity Links: Tesla to IRS and more"]
-    D3 --> E4["Return Relationship JSON"]
+    C3 --> D3["🌐 Traverse Links (Tesla → IRS, etc.)"]
+    D3 --> E4["📊 Return JSON"]
 
-    %% === AGGREGATION AND SYNTHESIS ===
-    E1 --> F["Combine All Insights"]
+    %% === AGGREGATION & SYNTHESIS ===
+    E1 --> F["🧩 Combine All Insights"]
     E2 --> F
-    E4 --> F
     E3 --> F
-
-    F --> G["RAG Engine: LLM Synthesizes Final Answer"]
-    G --> H["Display to User: Key People, Stock Price, Graph Insights, Summary"]
+    E4 --> F
+    F --> G["🧠 RAG Engine (LLM Synthesis)"]
+    G --> H["📺 Final Display: People, Price, Graphs, Summary"]
+```
 
 ## 🚀 Features
 
