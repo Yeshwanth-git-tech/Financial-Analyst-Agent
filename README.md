@@ -12,11 +12,10 @@ Agentive Finance AI is an autonomous system for financial research and analysis 
 - Use a knowledge graph (Neo4j) to map relationships among entities mentioned in filings  
 - Generate comprehensive, structured analysis with sections for documents, graph insights, and market data  
 
-
-
-```mermaid
+<details>
+<summary>📈 Fixed Mermaid Code (Open/Close tags included)</summary>
 flowchart TD
-    A[User Input: What is Tesla&apos;s stock price?] --> B{Orchestrator Agent}
+    A[User Input: What is Tesla's stock price?] --> B{Orchestrator Agent}
 
     subgraph Data Retrieval
         B --> C1[SEC Filings Agent - Parse 10-Ks]
@@ -29,12 +28,12 @@ flowchart TD
     D1 --> E1[Generate Filing Summary]
 
     %% Market Data Branch
-    C2 --> D2{API Key & Symbol Valid?}
-    D2 -- Yes --> E2[Fetch Real-Time $TSLA Price]
+    C2 --> D2{API Key and Symbol Valid?}
+    D2 -- Yes --> E2[Fetch Real-Time TSLA Price]
     D2 -- No --> E3[Handle Missing API Key]
 
     %% KG Branch
-    C3 --> D3[Traverse Entity Links (Tesla to IRS, etc.)]
+    C3 --> D3[Traverse Entity Links: Tesla to IRS and others]
     D3 --> E4[Return Relationship JSON]
 
     %% Aggregation & Synthesis
@@ -46,7 +45,10 @@ flowchart TD
     F --> G[RAG Engine - LLM Synthesizes Final Answer]
 
     G --> H[Display: People, Stock Price, Graph Insights, Summary]
-```
+
+</details>
+
+
 
 ## 📦 Tech Stack
 
