@@ -12,41 +12,40 @@ Agentive Finance AI is an autonomous system for financial research and analysis 
 - Use a knowledge graph (Neo4j) to map relationships among entities mentioned in filings  
 - Generate comprehensive, structured analysis with sections for documents, graph insights, and market data  
 
----
 
 
 ```mermaid
 flowchart TD
-    A[🎯 User Input<br>"What is Tesla's stock price?"] --> B{🤖 OrchestratorAgent}
+    A[User Input: "What is Tesla's stock price?"] --> B{Orchestrator Agent}
 
-    subgraph 📂 Data Retrieval
-        B --> C1[📄 SEC Filings Agent<br>Parse 10-Ks (LangChain + OpenAI)]
-        B --> C2[📈 Market Data Agent<br>Query Alpha Vantage API]
-        B --> C3[🔗 Knowledge Graph Agent<br>Query Neo4j]
+    subgraph Data Retrieval
+        B --> C1[SEC Filings Agent - Parse 10-Ks]
+        B --> C2[Market Data Agent - Alpha Vantage API]
+        B --> C3[Knowledge Graph Agent - Query Neo4j]
     end
 
     %% SEC Branch
-    C1 --> D1[🧠 Extract Key People, Risks, Revenues]
-    D1 --> E1[📝 Generate Filing Summary]
+    C1 --> D1[Extract Key People, Risks, Revenues]
+    D1 --> E1[Generate Filing Summary]
 
     %% Market Data Branch
     C2 --> D2{API Key & Symbol Valid?}
-    D2 -- Yes --> E2[💹 Fetch Real-Time $TSLA Price]
+    D2 -- Yes --> E2[Fetch Real-Time $TSLA Price]
     D2 -- No --> E3[Handle Missing API Key]
 
     %% KG Branch
-    C3 --> D3[🌐 Traverse Entity Links<br>(Tesla → IRS, Indemnitee, etc.)]
-    D3 --> E4[📊 Return Relationship JSON]
+    C3 --> D3[Traverse Entity Links (Tesla to IRS, etc.)]
+    D3 --> E4[Return Relationship JSON]
 
     %% Aggregation & Synthesis
-    E1 --> F[🧩 Combine All Insights]
+    E1 --> F[Combine All Insights]
     E2 --> F
     E4 --> F
     E3 --> F
 
-    F --> G[🧠 RAG Engine<br>LLM Synthesizes Final Answer]
+    F --> G[RAG Engine - LLM Synthesizes Final Answer]
 
-    G --> H[✅ Display to User:<br>- Key People<br>- Stock Price<br>- Relationships<br>- Investment Summary]
+    G --> H[Display to User: Key People, Stock Price, Relationships, Summary]
 ```
 
 ## 📦 Tech Stack
