@@ -16,7 +16,7 @@ Agentive Finance AI is an autonomous system for financial research and analysis 
 
 ```mermaid
 flowchart TD
-    A[User Input: "What is Tesla's stock price?"] --> B{Orchestrator Agent}
+    A[User Input: What is Tesla&apos;s stock price?] --> B{Orchestrator Agent}
 
     subgraph Data Retrieval
         B --> C1[SEC Filings Agent - Parse 10-Ks]
@@ -45,7 +45,7 @@ flowchart TD
 
     F --> G[RAG Engine - LLM Synthesizes Final Answer]
 
-    G --> H[Display to User: Key People, Stock Price, Relationships, Summary]
+    G --> H[Display: People, Stock Price, Graph Insights, Summary]
 ```
 
 ## 📦 Tech Stack
