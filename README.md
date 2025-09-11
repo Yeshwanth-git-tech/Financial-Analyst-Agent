@@ -14,45 +14,39 @@ Agentive Finance AI is an autonomous system for financial research and analysis 
 
 ---
 
+f```mermaid
 flowchart TD
-    subgraph Ingestion
-        A1[🔁 SEC Filings (.md, .html)]
-        A2[📈 Alpha Vantage API]
-        A3[📄 Filing Ingest (ingest_filing.py)]
+    A[🎯 User Input<br>"What is Tesla's stock price?"] --> B{🤖 OrchestratorAgent}
+
+    subgraph 📂 Data Retrieval
+        B --> C1[📄 SEC Filings Agent<br>Parse 10-Ks (LangChain + OpenAI)]
+        B --> C2[📈 Market Data Agent<br>Query Alpha Vantage API]
+        B --> C3[🔗 Knowledge Graph Agent<br>Query Neo4j]
     end
 
-    subgraph Embedding & Indexing
-        B1[🔎 OpenAI Embeddings]
-        B2[🧠 FAISS Vector Store]
-        B3[📦 StorageContext / VectorStoreIndex]
-    end
+    %% SEC Branch
+    C1 --> D1[🧠 Extract Key People, Risks, Revenues]
+    D1 --> E1[📝 Generate Filing Summary]
 
-    subgraph Knowledge Graph
-        C1[📊 Entity Extraction (NER)]
-        C2[🕸️ Neo4j Graph DB]
-        C3[⚙️ KnowledgeGraphBuilder]
-    end
+    %% Market Data Branch
+    C2 --> D2{API Key & Symbol Valid?}
+    D2 -- Yes --> E2[💹 Fetch Real-Time $TSLA Price]
+    D2 -- No --> E3[Handle Missing API Key]
 
-    subgraph Retrieval + Augmentation
-        D1[🔍 Hybrid RAG Engine]
-        D2[📘 RetrieverQueryEngine]
-        D3[🧾 SEC Filing + KG Query]
-    end
+    %% KG Branch
+    C3 --> D3[🌐 Traverse Entity Links<br>(Tesla → IRS, Indemnitee, etc.)]
+    D3 --> E4[📊 Return Relationship JSON]
 
-    subgraph Output
-        E1[📤 JSON + Markdown Answer]
-        E2[📈 Market Data Summary]
-        E3[💬 Final Response to User]
-    end
+    %% Aggregation & Synthesis
+    E1 --> F[🧩 Combine All Insights]
+    E2 --> F
+    E4 --> F
+    E3 --> F
 
-    A1 --> A3
-    A2 --> A3
-    A3 --> B1 --> B2 --> B3
-    A3 --> C1 --> C2 --> C3
-    B3 --> D1
-    C3 --> D1
-    D1 --> D2 --> D3 --> E1 --> E3
-    A2 --> E2 --> E3
+    F --> G[🧠 RAG Engine<br>LLM Synthesizes Final Answer]
+
+    G --> H[✅ Display to User:<br>- Key People<br>- Stock Price<br>- Relationships<br>- Investment Summary]
+```
 
 ## 📦 Tech Stack
 
